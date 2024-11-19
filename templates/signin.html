@@ -1,0 +1,56 @@
+{% extends 'layout.html'  %}
+{% block title %} E-motors {% endblock %}
+{% block content %}
+
+<style>
+  #btn-submit{
+    font-size: 23px;
+    width: 200px;
+    height: 50px;
+  }
+</style>
+
+<header class="header"> 
+  <a href="/" class="logo"><i>E-</i> 
+  <span><i>MOTORS</i></span> </a>
+
+  <i class='bx bx-menu' id="menu-icon"></i>
+
+  <nav class="navbar">
+      <a href="/">Home</a>
+      <a href="/signup">Signup</a>
+      
+
+  </nav>
+
+</header>
+<br><br><br><br><br>
+<section class="contact" id="contact">
+  <h2 class="heading">sig<span>nin</span>
+  </h2>
+
+  <form action="/signin" method="post">
+      <div class="input-group">
+          <div class="input-box">
+              <input type="email" name="correo"
+              placeholder="username">
+              <input type="password" name="clave"
+              placeholder="password">
+          </div>
+
+
+          <div class="input-group-2">
+          
+            <input id="btn-submit" type="submit"
+            value="login" class="btn">
+        </div>
+
+        
+
+          
+      </div>
+
+      
+  </form>
+</section>
+{% endblock %}
