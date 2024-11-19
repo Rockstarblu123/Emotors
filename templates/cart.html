@@ -1,0 +1,261 @@
+{% extends 'layout.html' %}
+
+{% block title  %} "E-motors" {% endblock %}
+
+{% block content %}
+
+<style>
+
+
+
+
+/* Basado en Main.css */
+
+/* Cart Section */
+.cart {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--main-bg-color, #080808);
+    border-radius: var(--border-radius, 10px);
+    box-shadow: 0 0 15px var(--highlight-color, #ff0000);
+}
+
+.cart h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--accent-color, #ff0000);
+    margin-bottom: 2rem;
+}
+
+/* Cart Table */
+.cart-container {
+    overflow-x: auto;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+.cart-table th, .cart-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--accent-color, #ff0000);
+}
+
+.cart-table th {
+    background-color: var(--secondary-bg-color, #333);
+    color: var(--accent-color, #ff0000);
+}
+
+.cart-table td img {
+    width: 80px;
+    border-radius: var(--border-radius, 10px);
+}
+
+.cart-quantity {
+    width: 60px;
+    padding: 0.5rem;
+    border-radius: var(--border-radius, 5px);
+    border: none;
+    background-color: var(--secondary-bg-color, #333);
+    color: var(--text-color, #fff);
+    text-align: center;
+}
+
+.cart-quantity:focus {
+    outline: 2px solid var(--accent-color, #ff0000);
+}
+
+.remove-btn {
+    background-color: var(--danger-color, #ff3b3b);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: var(--border-radius, 5px);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.remove-btn:hover {
+    background-color: var(--danger-hover-color, #ff1a1a);
+}
+
+/* Summary Section */
+.cart-summary {
+    background-color: var(--main-bg-color, #1a1a1a);
+    padding: 1.5rem;
+    border-radius: var(--border-radius, 10px);
+    box-shadow: 0 0 10px rgba(90, 253, 242, 0.2);
+}
+
+.cart-summary h2 {
+    font-size: 2rem;
+    color: var(--accent-color, #ff0000);
+    margin-bottom: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--accent-color, #ff0000);
+    border: none;
+    color: var(--main-bg-color, #1a1a1a);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: var(--border-radius, 5px);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.checkout-btn:hover {
+    background-color: var(--accent-hover-color, #c10000);
+}
+
+
+
+</style>
+
+<br><br><br><br><br><br><br><br><br>
+
+
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <a href="/" class="logo"><i>E-</i> 
+            <span><i>MOTORS</i></span> </a>
+
+
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="/store">Store</a>
+            <a href="cart.html" class="active">Cart</a>
+            
+            
+        </nav>
+    </header>
+
+    <!-- Shopping Cart Section -->
+    <section class="cart">
+        <h1>Carrito de Compras</h1>
+        <div class="cart-container">
+            <!-- Table for Cart Items -->
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Product 1 -->
+                    <tr>
+                        <td>
+                            <div class="cart-item">
+                                <img src="product1.jpg" alt="Producto 1">
+                                <span>Producto 1</span>
+                            </div>
+                        </td>
+                        <td>$100</td>
+                        <td>
+                            <input type="number" value="1" class="cart-quantity">
+                        </td>
+                        <td>$100</td>
+                        <td>
+                            <button class="btn remove-btn">Eliminar</button>
+                        </td>
+                    </tr>
+                    <!-- Example Product 2 -->
+                    <tr>
+                        <td>
+                            <div class="cart-item">
+                                <img src="product2.jpg" alt="Producto 2">
+                                <span>Producto 2</span>
+                            </div>
+                        </td>
+                        <td>$200</td>
+                        <td>
+                            <input type="number" value="2" class="cart-quantity">
+                        </td>
+                        <td>$400</td>
+                        <td>
+                            <button class="btn remove-btn">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="cart-summary">
+            <h2>Resumen del Pedido</h2>
+            <div class="summary-item">
+                <span>Subtotal</span>
+                <span>$500</span>
+            </div>
+            <div class="summary-item">
+                <span>Envío</span>
+                <span>$50</span>
+            </div>
+            <div class="summary-item">
+                <span>Total</span>
+                <span>$550</span>
+            </div>
+            <button class="btn checkout-btn">Proceder al Pago</button>
+        </div>
+    </section>
+
+    
+</body>
+
+<script>
+    // Seleccionar todos los botones de eliminar
+    document.addEventListener('DOMContentLoaded', function() {
+        const removeButtons = document.querySelectorAll('.remove-btn');
+
+        // Agregar un evento de clic a cada botón
+        removeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Obtener la fila (tr) que contiene el botón
+                const row = this.closest('tr');
+                
+                // Eliminar la fila del DOM
+                row.remove();
+                
+                // Opcional: Mostrar una alerta de confirmación o actualizar el resumen del pedido
+                alert('Producto eliminado del carrito.');
+            });
+        });
+    });
+
+    // Seleccionar el botón de proceder al pago
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkoutButton = document.querySelector('.checkout-btn');
+
+        // Agregar un evento de clic al botón
+        checkoutButton.addEventListener('click', function() {
+            alert('productos pagados.');
+            // Redirigir a la página de pago
+            // Cambia '/checkout' a la URL de tu página de pago
+        });
+    });
+</script>
+
+
+
+
+{% endblock %}
