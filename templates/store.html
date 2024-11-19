@@ -1,0 +1,207 @@
+{% extends 'layout.html'  %}
+{% block title %} store {% endblock %}
+{% block content %}
+
+<style>
+
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+#cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+    #hero {min-height: 100vh;
+    position: absolute;
+}
+
+video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.capa{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: overlay;
+}
+
+  /* Estilo para el icono con id 'kart' */
+#kart {
+    font-size: 45px; /* Cambia el tamaño del icono aquí */
+    color: #800000; 
+    position: absolute;
+    right: 30px;
+    top: 30px;
+
+}
+#kart:hover {
+    color: #ff0000;
+
+
+}
+
+
+#moto-store{
+    font-size: 400px;
+}
+
+
+#all-motorcycles img {
+    width: 17vw !important; /* Aplica solo a las imágenes de la segunda sección */
+    margin: 12px ;
+}
+
+
+
+</style>
+
+    <header class="header">
+        <a href="/" class="logo"><i>E-</i> 
+            <span><i>MOTORS</i></span> </a>
+
+
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="#productos" class="active">Store</a>
+            <a href= "/#services">Services</a>
+            <a href="/#testimonials">Testimonials</a>
+            <a href="/#contact">Contact</a>
+            <a href="/cart"> 
+                <i class='bx bx-cart' id="kart">
+                    <span id="cart-count">0</span>
+                </i> 
+            </a>
+            
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+
+        <!-- este es un video de fondo -->
+        <video muted autoplay loop>
+            <source src="/static/videos/backgorund_store.mp4" type="video/mp4">
+        </video>
+        
+        <!-- aqui termina el video -->
+
+
+        <div class="home-content">
+            <h1><i>E-<span>MOTORS</span> STORE</i></h1>
+            <br>
+            <p>Discover our range of efficient and sustainable electric motorcycles.</p>
+        </div>
+    </section>
+<br>
+    <section id="productos">
+        <h2 class="heading"><i>MORE SOLD MOTORCYCLE</i></h2>
+        <h3>
+            <!-- esto es una prueba -->
+            <div class="home-img">
+                <img  src="/static/img/moto electrica 1.jpg" alt="moto electrica">
+                <img src="/static/img/moto electrica 3.jpg"alt="moto electrica 2">
+                <img src="/static/img/moto electrica 2.jpg"alt="moto electrica 3">
+            </div>
+            <!-- aqui termina la prueba -->
+            <!-- botones para agregar al carro -->
+            <div class="btn-group">
+                <form action="/agregar_al_carrito" method="POST" onsubmit="addToCart(event)">
+                    <input type="hidden" name="producto_id">
+                    <button class="btn" type="submit">Agregar al carrito</button>
+                </form>
+            </div>
+            <!-- aqui termina los botones -->
+
+        </h3>
+
+    </section>
+
+    <section class="Catalogs">
+        <h2 class="heading">Our Catalogs</h2>
+        
+        
+        <div class="services-container">
+            
+
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Urban Electric Motor</h4>
+                    <p>The perfect bike for your trips around the city.</p>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Moto Eléctrica clasica</h4>
+                    <p>The perfect bike for your long trips on the road.</p>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Adventure Electric Motor</h4>
+                    <p>Get ready for adventure with this robust electric motorcycle.</p>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Motorbike Sport</h4>
+                    <p>Performance and style for speed lovers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="all-motorcycles" class="all bikes">
+
+        <h2 class="heading"><i>ALL MOTORCYCLE</i></h2>
+        <div class="home-img">
+            <a href="motos/moto1.html"></a>
+            <img id="moto-store" src="/static/img/moto electrica 1.jpg" alt="moto electrica">
+            <img id="moto-store" src="/static/img/moto electrica 2.jpg"alt="moto electrica 2">
+            <img src="/static/img/moto electrica 3.jpg" alt="moto electrica 3">
+            <img  src="/static/img/moto electrica 4.jpg" alt="moto electrica">
+            <img src="/static/img/moto electrica 5.jpg" alt="moto electrica 2">
+            <img src="/static/img/moto electrica 6.jpg" alt="moto electrica 3">
+            <img  src="/static/img/moto electrica 7.jpg" alt="moto electrica">
+            <img src="/static/img/moto electrica 8.jpg"alt="moto electrica 2">
+            <img src="/static/img/moto electrica 9.jpg"alt="moto electrica 3">
+            <img  src="/static/img/moto electrica 10.jpg" alt="moto electrica">
+        </div>
+        
+    </section>
+    
+
+    <script>
+        // Inicializar el contador del carrito
+        let cartCount = 0;
+    
+        // Función para actualizar el contador del carrito
+        function addToCart(event) {
+            event.preventDefault(); // Evita el envío del formulario para pruebas locales
+    
+            // Lógica para agregar al carrito
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+    </script>
+
+
+
+    {% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'layout.html'  %}
+{% block title %} E-motors {% endblock %}
+{% block content %}
+
+<style>
+
+.home-img {
+    position: relative !important; /* Mantiene el contexto para el posicionamiento de la imagen */
+}
+
+.home-img img {
+    width: 10vw !important;      /* Ajusta el tamaño de la imagen */
+    position: absolute !important;
+    left: 10%;                   /* Centra la imagen horizontalmente */
+    top: -180px !important;      /* Ajusta la distancia para colocarla encima del texto */
+    transform: translateX(-50%); /* Centra la imagen en su contenedor */
+}
+
+    
+
+
+
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-motors Profile</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        
+            <a class="logo" href="/"><i>E-</i><span><i>MOTORS</i></span></a>
+            
+        
+        <nav class="navbar">
+            <a href="/" class="active">Inicio</a>
+            <a href="/store">Store</a>
+            <a href="/User"></a>
+            <a href="/signout">cerrar sesion</a>
+        </nav>
+    </header>
+
+    <!-- Profile Section -->
+    <section class="home">
+        <div class="home-content">
+            <div class="home-img">
+                <img src="/static/img/foto de perfil incognito.jpg" alt="Foto de perfil">
+            </div>
+            <h3>{{current_user.nombre}}</h3>
+            <h1>Bienvenido a mi Perfil</h1>
+            <p>Información adicional sobre el usuario.</p>
+        </div>
+    </section>
+
+    <!-- Favorite Items Section -->
+    <section class="Catalogs">
+        <h2 class="heading">Our Catalogs</h2>
+        
+        
+        <div class="services-container">
+            
+
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Urban Electric Motor</h4>
+                    <p>The perfect bike for your trips around the city.</p>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Moto Eléctrica clasica</h4>
+                    <p>The perfect bike for your long trips on the road.</p>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Adventure Electric Motor</h4>
+                    <p>Get ready for adventure with this robust electric motorcycle.</p>
+                </div>
+            </div>
+            <div class="service-box">
+                <div class="service-info">
+                    <h4>Motorbike Sport</h4>
+                    <p>Performance and style for speed lovers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Content Section -->
+    <section class="education">
+        <h2 class="heading">services</h2>
+        <div class="timeline-items">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <p>From gasoline to electric</p>
+                <p>conversion of gasoline motorcycles to electric motorcycles to save money and have a better environment.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <p>energy self-generator</p>
+                    <p>the energy self-generator is a device that generates energy from the movement of the motorcycle, this energy is stored in a battery and is used to move the motorcycle.</p>
+                
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <p>aesthetic modifications</p>
+                    <p>we make aesthetic modifications to the motorcycle, such as painting, decals, etc.</p>
+                
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <p>electric motorcycle parts</p>
+                    <p>we have all the parts for electric motorcycles, such as batteries, controllers, motors, etc.</p>:
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="testimonials">
+        <h2 class="heading">Productos</h2>
+        <div class="wrapper">
+            <div class="testimonials-item">
+                <img src="product1.jpg" alt="Producto 1">
+                <h2>Producto 1</h2>
+                <p>Descripción del producto 1.</p>
+            </div>
+            <div class="testimonials-item">
+                <img src="product2.jpg" alt="Producto 2">
+                <h2>Producto 2</h2>
+                <p>Descripción del producto 2.</p>
+            </div>
+            <div class="testimonials-item">
+                <img src="product3.jpg" alt="Producto 3">
+                <h2>Producto 3</h2>
+                <p>Descripción del producto 3.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Quejas o sugerencias</h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Nombre">
+                <input type="email" placeholder="Correo Electrónico">
+            </div>
+            <textarea placeholder="Mensaje"></textarea>
+            <div class="btn-group">
+                <button class="btn" type="submit">Enviar Mensaje</button>
+            </div>
+        </form>
+    </section>
+
+</body>
+
+
+
+
+
+
+{% endblock %}
