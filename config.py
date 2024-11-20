@@ -16,6 +16,18 @@ class DevelopmentConfig(Config):
     MYSQL_PASSWORD = '3311546193Aa@'
     MYSQL_DB = 'e-motors'''
 
+    class MainConfig(Config):
+        MAIL_SERVER    = 'smp.gmail.com'
+        MAIL_PORT      = 587
+        MAIL_USE_TLS   = True
+        MAIL_USE_SSL   = False
+        MAIL_USERNAME  = 'gerardo.godinez1811@alumnos.udg.mx'
+        MAIL_PASSWORD  = 'johg vcvh rign ooxp'
+        MAIL_ASCII_ATTACHMENTS = True
+        MAIL_DEFAULT_SENDER = 'gerardo.godinez1811@alumnos.udg.mx'
+
+# Corregir el diccionario 'config' añadiendo la coma
 config = {
-    'development' : DevelopmentConfig
-  }
+    'development': DevelopmentConfig,
+    'mail': Config
+}

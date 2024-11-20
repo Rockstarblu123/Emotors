@@ -3,16 +3,19 @@ from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 from flask_login import LoginManager, login_user, logout_user
+from flask_mail import Mail, Message
 from config import config
 from models.ModelUser import ModelUser
 from models.entities.User import User
 #holada
 motors = Flask(__name__)
-db = MySQL(motors)
+
 
 # Configuración de la aplicación
-#motors.config.from_object(config['development'])
-
+motors.config.from_object(config['development'])
+motors.config.from_object(config['mail'])
+db = MySQL(motors)
+mail = (motors)
 adminSession = LoginManager(motors)
 
 @adminSession.user_loader
@@ -78,6 +81,9 @@ def signup():
         regUsuario = db.connection.cursor()
         regUsuario.execute("INSERT INTO usuario (nombre, correo, clave, fechareg) VALUES (%s, %s, %s, %s)", (nombre, correo, claveCifrado, fechareg))
         db.connection.commit()
+        mensaje =  Message(subject='welcometo a E-motors', recipients=[correo])
+        mensaje.html = render_template('mail.html', nombre = nombre)
+        mail.send(mensaje)
         regUsuario.close()
         
         return redirect(url_for('home'))
