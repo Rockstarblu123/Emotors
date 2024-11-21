@@ -15,7 +15,7 @@ motors = Flask(__name__)
 motors.config.from_object(config['development'])
 motors.config.from_object(config['mail'])
 db = MySQL(motors)
-mail = (motors)
+mail = Mail(motors)
 adminSession = LoginManager(motors)
 
 @adminSession.user_loader
@@ -25,6 +25,14 @@ def addUser(id):
 @motors.route('/')
 def home():
     return render_template('home.html')
+
+@motors.route('/user')
+def user():
+    return redirect(url_for('sProducto'))
+
+@motors.route('/admin')
+def admin():
+    return render_template('admin.html')
 
 @motors.route('/store')
 def store():
@@ -38,9 +46,6 @@ def cart():
 def moto1():
     return render_template('moto1.html')
 
-@motors.route('/admin')
-def admin():
-    return render_template('admin.html')
 
 @motors.route('/User_page')
 def User_page():  # Renombrado para evitar conflicto con la clase User
@@ -112,5 +117,4 @@ def sMotos():
     return render_template('motos.html', Motos=M)
 
 if __name__ == '__main__':
-    motors.config.from_object(config['development'])
     motors.run(port=3300)
