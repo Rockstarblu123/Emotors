@@ -9,12 +9,12 @@ class DevelopmentConfig(Config):
     MYSQL_HOST = 'localhost'
     MYSQL_USER = 'root'
     MYSQL_PASSWORD = 'mysql'
-    MYSQL_DB = 'E-motors'
+    MYSQL_DB = 'Emotors'
     # python anywhere
     '''MYSQL_HOST = 'emotors.mysql.pythonanywhere-services.com'
     MYSQL_USER = 'emotors'
     MYSQL_PASSWORD = '3311546193Aa@'
-    MYSQL_DB = 'e-motors'''
+    MYSQL_DB = 'emotors'''
 
 class MailConfig(Config):
         MAIL_SERVER    = 'smtp.gmail.com'
